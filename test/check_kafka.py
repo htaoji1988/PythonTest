@@ -28,7 +28,7 @@ def restart_kafka(kafkabin, kafkacfg):  # 定义启动方法
 
 def check_kafka():  # 定义检查tomcat方法
     print "----------------------------"
-    print date_now, "开始检查 kafka..."
+    print date_now, "开始检查 kafka......"
     if process_id:  # 如果存在进程ID则往下执行
         print "进程已存在."
     else:
