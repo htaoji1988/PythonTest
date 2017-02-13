@@ -32,6 +32,6 @@ def send_mail(to_list, sub, content):
 
 if __name__ == '__main__':
     if send_mail(mailto_list, "hello", "hello world!"):
-        print "发送成功"
+        print "发送成功!"
     else:
-        print "发送失败"
+        print "发送失败!"
