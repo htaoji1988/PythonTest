@@ -1,0 +1,3 @@
+alex pass1
+haitao pass2
+xiaoming  pass3
