@@ -1,5 +1,8 @@
-number = input('please Enter a number:')
-if 1 <= number <= 10:
-    print "ok!"
-else:
-    print "bad!"
+def test(n):
+    if n == 1:
+        return 1
+    else:
+        return n * test(n - 1)
+
+
+print test(100)
