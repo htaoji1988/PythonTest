@@ -1,12 +1,23 @@
-mylist = [1, 2, 3, 4, [1, 3, 4, [6, 6, 6]]]
+def checkIndex(key):
+    if not isinstance(key, (int, long)):
+        raise TypeError
+    if key < 0:
+        raise IndexError
 
 
-def print_list(the_list):
-    for i in the_list:
-        if isinstance(i, list):
-            print_list(i)
-        else:
-            print i
+class ArithmeticSequence:
+    def __init__(self, start=0, step=1):
+        self.start = start
+        self.step = step
+        self.changed = {}
 
+    def __getitem__(self, key):
+        checkIndex(key)
+        try:
+            return self.changed[key]
+        except KeyError:
+            return self.start + key * self.step
 
-print_list(mylist)
+    def __setitem__(self, key, value):
+        checkIndex(key)
+        self.changed[key] = value
