@@ -1,4 +1,4 @@
-class CountList():
+class CountList:
     def __str__(self):
         return "hello world!"
 
@@ -9,4 +9,3 @@ class CountList():
     def __getitem__(self, index):
         self.counter += 1
         return super(CountList, self).__getitem__(index)
-
