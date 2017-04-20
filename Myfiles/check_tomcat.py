@@ -17,8 +17,7 @@ StartTomcat = "sh /apps/service/tomcat/bin/startup.sh"
 # 定义测试URL
 WebUrl = "http://127.0.0.1:8099/kafka/"
 # 获取进程ID
-process_id = commands.getoutput(
-    "ps -ef|grep /apps/service/tomcat/|grep -v grep|awk '{print $2}'")
+process_id = commands.getoutput("ps -ef|grep /apps/service/tomcat/|grep -v grep|awk '{print $2}'")
 
 # 设置URL超时时间
 socket.setdefaulttimeout(5)

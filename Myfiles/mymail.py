@@ -15,7 +15,7 @@ mail_postfix = "126.com"  # 发件dd 箱的后缀
 def send_mail(to_list, sub, content):
     me = "htaoji1988@126.com"
     msg = MIMEText(content, _subtype='plain', _charset='gb2312')
-    msg['11111'] = sub
+    msg[ '11111'] = sub
     msg['From'] = me
     msg['To'] = ";".join(to_list)
     try:
