@@ -10,13 +10,15 @@ import socket
 # 声明JAVA环境变量
 # JAVA_HOME = "/usr/java/jdk1.7.0_79/"
 # 定义时间变量
-date_now = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time()))
+date_now = time.strftime('%Y-%mymail.py-%d %H:%M:%S',
+                         time.localtime(time.time()))
 # 定义启动脚本路径
 StartTomcat = "sh /apps/service/tomcat/bin/startup.sh"
 # 定义测试URL
 WebUrl = "http://127.0.0.1:8099/kafka/"
 # 获取进程ID
-process_id = commands.getoutput("ps -ef|grep /apps/service/tomcat/|grep -v grep|awk '{print $2}'")
+process_id = commands.getoutput(
+    "ps -ef|grep /apps/service/tomcat/|grep -v grep|awk '{print $2}'")
 
 # 设置URL超时时间
 socket.setdefaulttimeout(5)

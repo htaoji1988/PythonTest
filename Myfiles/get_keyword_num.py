@@ -35,8 +35,12 @@ def test(files, date, keyword):
 def get_num():
     num = 0
     for date_keyword in date_strings:
-        num = num + test("/data1/logs/interface/kafka_produce_41.log", date_keyword, "Kafka异常")
-        num = num + test("/data1/logs/interface/kafka_produce_42.log", date_keyword, "Kafka异常")
+        num = num + \
+            test("/data1/logs/interface/kafka_produce_41.log",
+                 date_keyword, "Kafka异常")
+        num = num + \
+            test("/data1/logs/interface/kafka_produce_42.log",
+                 date_keyword, "Kafka异常")
     if num > 50:
         log_out("/tmp/test.txt", date_now + " fail:kafka-produce响应异常\n")
     else:

@@ -14,7 +14,8 @@ kafka_bin = home_kafka + 'bin'
 kafka_cfg = home_kafka + 'config/server.properties &'
 
 # 获取进程ID
-process_id = commands.getoutput("ps -ef|grep /home/apps/kafka/bin|grep -v grep|awk '{print $2}'")
+process_id = commands.getoutput(
+    "ps -ef|grep /home/apps/kafka/bin|grep -v grep|awk '{print $2}'")
 
 
 def restart_kafka(kafkabin, kafkacfg):  # 定义启动方法
