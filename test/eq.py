@@ -12,6 +12,7 @@ def conflict(state, nextX):
             return True
     return False
 
+
 # 采用生成器的方式来产生每一个皇后的位置，并用递归来实现下一个皇后的位置。
 
 
@@ -20,19 +21,21 @@ def queens(num, state=()):
         if not conflict(state, pos):
             # 产生当前皇后的位置信息
             if len(state) == num - 1:
-                yield (pos, )
+                yield (pos,)
             # 否则，把当前皇后的位置信息，添加到状态列表里，并传递给下一皇后。
             else:
                 for result in queens(num, state + (pos,)):
-                    yield (pos, ) + result
+                    yield (pos,) + result
 
 
 # 为了直观表现棋盘，用X表示每个皇后的位置
 def prettyprint(solution):
     def line(pos, length=len(solution)):
         return '. ' * (pos) + 'X ' + '. ' * (length - pos - 1)
+
     for pos in solution:
         print line(pos)
+
 
 if __name__ == "__main__":
     prettyprint(random.choice(list(queens(8))))

@@ -1,37 +1,30 @@
-#!/usr/bin/python
-# coding=utf-8
+#! /usr/bin/python
+# coding:utf-8
+'''
+[INFORMATION]
+Zabbix Send Email With Python
+AUTHOR : Wing
+GitHub : https://github.com/wing324
+Email : wing324@126.com
+'''
 
-# -*- coding: UTF-8 -*-
-import smtplib
 from email.mime.text import MIMEText
-
-mailto_list = ["823136165@qq.com"]
-mail_host = "smtp.126.com"  # 设置服务器
-mail_user = "htaoji1988"  # 用户名
-mail_pass = "Ht511301"  # 口令
-mail_postfix = "126.com"  # 发件dd 箱的后缀
+import smtplib
+import sys
 
 
-def send_mail(to_list, sub, content):
-    me = "htaoji1988@126.com"
-    msg = MIMEText(content, _subtype='plain', _charset='gb2312')
-    msg[ '11111'] = sub
-    msg['From'] = me
-    msg['To'] = ";".join(to_list)
-    try:
-        server = smtplib.SMTP()
-        server.connect(mail_host)
-        server.login(mail_user, mail_pass)
-        server.sendmail(me, to_list, msg.as_string())
-        server.close()
-        return True
-    except Exception, e:
-        print str(e)
-        return False
+def send_mail(_to_email, _subject, _message):
+    # 定义邮件发送
+    smtp_host = 'smtp.126.com'
+    from_email = 'htaoji1988@126.com'
+    passwd = 'Ht511301'
+    msg = MIMEText(_message, 'plain', 'utf-8')
+    msg['Subject'] = _subject
+    smtp_server = smtplib.SMTP(smtp_host, 25)
+    smtp_server.login(from_email, passwd)
+    smtp_server.sendmail(from_email, [_to_email], msg.as_string())
+    smtp_server.quit()
 
 
 if __name__ == '__main__':
-    if send_mail(mailto_list, "hello", "hello world!"):
-        print "发送成功"
-    else:
-        print "发送失败"
+    send_mail(sys.argv[1], sys.argv[2], sys.argv[3])
