@@ -16,7 +16,8 @@ backup_path = '/Users/tt/test/bak/' + str(date_now)
 
 def get_pid():
     try:
-        pid = subprocess.check_output('ps -ef|grep ' + tomcat_home + ' |grep -v grep', shell=True).split()[1:2]
+        pid = subprocess.check_output(
+            'ps -ef|grep ' + tomcat_home + ' |grep -v grep', shell=True).split()[1:2]
         return pid[0].decode('utf-8')
     except Exception as e:
         print(str(e))
@@ -40,7 +41,7 @@ def stop_service(pid):
         except Exception as e:
             print(str(e))
     else:
-        pass
+        print('tomcat进程未启动无需停止...')
 
 
 def start_service():
@@ -66,9 +67,6 @@ def copy_newpackage(src_path, dis_tpath):
 
 if __name__ == "__main__":
     stop_service(get_pid())
-
     back_up()
-
     copy_newpackage(new_package, webapp_home)
-
     start_service()
