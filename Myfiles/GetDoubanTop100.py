@@ -6,6 +6,6 @@ import urllib2
 
 r1 = re.compile(r'helloworld')
 if r1.match('helloworld'):
-    print 'match succeeds'
+    print('match succeeds')
 else:
-    print 'match fails'
+    print('match fails')
