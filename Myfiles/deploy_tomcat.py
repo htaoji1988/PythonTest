@@ -5,20 +5,21 @@ import shutil
 import subprocess
 from datetime import datetime
 
-package_name = 'jenkins.war'
-new_package = '/tmp/src/' + package_name
-tomcat_home = '/Users/tt/test/usr/tomcat7/'
-webapp_home = tomcat_home + 'webapps/'
-date_today = datetime.now().strftime('%Y%m%d')
-date_now = datetime.now().strftime('%Y%m%d_%H%M%S')
-backup_path = '/Users/tt/test/bak/' + str(date_now)
+package_name = 'jenkins.war'  # jar包名
+new_package = '/tmp/src/' + package_name  # 新包路径
+tomcat_home = '/Users/tt/test/usr/tomcat7/'  # tomcat目录
+webapp_home = tomcat_home + 'webapps/'  # 工程目录
+date_now = datetime.now().strftime('%Y%m%d_%H%M%S')  # 当前时间
+backup_path = '/Users/tt/test/bak/' + str(date_now)  # 备份目录
 
 
 def get_pid():
     try:
         pid = subprocess.check_output(
-            'ps -ef|grep ' + tomcat_home + ' |grep -v grep', shell=True).split()[1:2]
+            'ps -ef|grep ' + tomcat_home + ' |grep -v grep',
+            shell=True).split()[1:2]
         return pid[0].decode('utf-8')
+
     except Exception as e:
         print(str(e))
 
