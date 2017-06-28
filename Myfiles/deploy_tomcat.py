@@ -15,14 +15,12 @@ backup_path = '/Users/tt/test/bak/' + str(date_now)  # 备份目录
 
 def get_pid():
     try:
-        pid = subprocess.check_output(
-            'ps -ef|grep ' + tomcat_home + ' |grep -v grep',
-            shell=True).split()[1:2]
+        pid = subprocess.check_output('ps -ef|grep ' + tomcat_home + ' |grep -v grep',
+                                      shell=True).split()[1:2]
         return pid[0].decode('utf-8')
 
     except Exception as e:
         print(str(e))
-
 
 def back_up():
     os.mkdir(backup_path)
@@ -32,6 +30,7 @@ def back_up():
         print('完成备份...')
     except Exception as e:
         print('备份失败:' + str(e))
+
 
 
 def stop_service(pid):
