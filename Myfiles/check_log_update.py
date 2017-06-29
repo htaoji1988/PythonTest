@@ -26,9 +26,9 @@ def compare_size():  # 主程序，用来比较不同时间内文件大小是否
     time.sleep(10)
     size2 = size_files(path)
     if size1 == size2:
-        print "Err:File not refreshed!"
+        print("Err:File not refreshed!")
     else:
-        print "File refreshed."
+        print("File refreshed.")
 
 
 if __name__ == "__main__":
