@@ -1,4 +1,5 @@
-import fileinput, re
+import fileinput
+import re
 
 pat = re.compile('From:(.*)<.*?>$')
 for line in fileinput.input('/Users/tt/Downloads/test'):
