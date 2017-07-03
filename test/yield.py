@@ -4,4 +4,4 @@ def test(max):
 
 
 for item in test(5):
-    print item
+    print(item)

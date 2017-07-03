@@ -14,23 +14,23 @@ class MovieHandler(xml.sax.ContentHandler):
     def startElement(self, tag, attributes):
         self.CurrentData = tag
         if tag == 'movie':
-            print '******movie******'
+            print('******movie******')
             title = attributes['title']
-            print 'Title:', title
+            print('Title:', title)
 
     def endElement(self, tag):
         if self.CurrentData == 'type':
-            print 'Type:', self.type
+            print('Type:', self.type)
         elif self.CurrentData == 'format':
-            print 'Format:', self.format
+            print('Format:', self.format)
         elif self.CurrentData == 'year':
-            print 'year', self.year
+            print('year', self.year)
         elif self.CurrentData == 'rating':
-            print 'rating', self.rating
+            print('rating', self.rating)
         elif self.CurrentData == 'stars':
-            print 'stars', self.stars
+            print('stars', self.stars)
         elif self.CurrentData == 'description':
-            print 'description', self.description
+            print('description', self.description)
         self.CurrentData = ''
 
     def characters(self, content):

@@ -5,4 +5,4 @@ movies = root.findall('movie')
 
 
 for movie in movies:
-    print movie.find('type').text
+    print(movie.find('type').text)
