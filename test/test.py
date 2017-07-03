@@ -1,6 +1,4 @@
-def test(flag, *args):
-    for i in args:
-        print(i, "\n")
+from test import somescript
 
-
-test(1, 2, 3, 4, 5)
+t = somescript.Student()
+print(t.setage('29'))
