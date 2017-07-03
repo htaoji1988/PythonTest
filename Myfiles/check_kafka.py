@@ -20,20 +20,20 @@ process_id = commands.getoutput(
 
 def restart_kafka(kafkabin, kafkacfg):  # 定义启动方法
     try:
-        print date_now, "start-kafka:"
+        print(date_now, "start-kafka:")
         os.system('cd ' + kafkabin)
         os.system('nohup kafka-server-start.sh ' + kafkacfg)
-    except IOError, e:
-        print e
+    except IOError as e:
+        print(e)
 
 
 def check_kafka():  # 定义检查tomcat方法
-    print "----------------------------"
-    print date_now, "开始检查 kafka......"
+    print("----------------------------")
+    print(date_now, "开始检查 kafka......")
     if process_id:  # 如果存在进程ID则往下执行
-        print "进程已存在."
+        print("进程已存在.")
     else:
-        print "进程不存在,开始启动."
+        print("进程不存在,开始启动.")
         restart_kafka(kafka_bin, kafka_cfg)
 
 
