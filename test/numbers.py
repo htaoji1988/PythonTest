@@ -5,4 +5,4 @@ def test(n):
         return n * test(n - 1)
 
 
-print test(100)
+print(test(100))
