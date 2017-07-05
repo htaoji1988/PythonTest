@@ -1,17 +1,14 @@
-import pymysql
+import pymysql.cursors
 
-db = pymysql.connect("172.16.107.136", "root", "Abcd@1234", "testdb")
-
-# 使用 cursor() 方法创建一个游标对象 cursor
-cursor = db.cursor()
-
-# 使用 execute()  方法执行 SQL 查询
-cursor.execute("SELECT VERSION()")
-
-# 使用 fetchone() 方法获取单条数据.
-data = cursor.fetchone()
-
-print("Database version : %s " % data)
-
-# 关闭数据库连接
-db.close()
+connection = pymysql.connect(host='172.16.107.136',
+                             user='root',
+                             password='Abcd@1234',
+                             db='testdb',
+                             charset='utf8mb4',
+                             cursorclass=pymysql.cursors.DictCursor)
+# cur = conn.cursor()
+# cur.execute("SELECT * FROM user")
+# for r in cur.fetchall():
+#    print(r)
+# cur.close()
+# conn.close()
