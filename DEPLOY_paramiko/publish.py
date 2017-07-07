@@ -1,6 +1,6 @@
 # coding=utf-8
 
-import Deploy
+from . import Deploy
 import sys
 
 
