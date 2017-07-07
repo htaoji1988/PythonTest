@@ -1,11 +1,9 @@
-# coding=utf-8
-
 import paramiko
 import os
 
 tomcat_home = '/apps/usr/tomcat7'
-hosts = "172.16.107.137"
-cmd = ['touch /tmp/666']
+hosts = "172.16.107.136"
+cmd = ['/apps/service/scripts/deploy.sh']
 
 
 # 定义发布方法
@@ -23,6 +21,5 @@ def deploy(user, host):
         stdin, stdout, stderr = c.exec_command(command)
         print(stdout.read())
     c.close()
-
 
 deploy('root', hosts)
