@@ -23,7 +23,7 @@ $RECYCLE.BIN/
 
 # OSX
 # =========================
-
+ DEPLOY
 .DS_Store
 .AppleDouble
 .LSOverride
@@ -45,3 +45,5 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+.idea/dataSources.local.xml
+.idea/workspace.xml
