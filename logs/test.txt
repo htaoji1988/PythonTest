@@ -1,0 +1,17 @@
+INFO:root:start program!
+INFO:root:Trying to divide 1 by 0
+INFO:root:start program!
+INFO:root:Trying to divide 1 by 0
+WARNING:root:wrong!
+INFO:root:The division successes
+INFO:root:
+INFO:root:start program!
+INFO:root:Trying to divide 1 by 0
+ERROR:root:wrong!
+INFO:root:The division successes
+INFO:root:
+2017-07-07 14:26:32,527:INFO:start program!
+2017-07-07 14:26:32,528:INFO:Trying to divide 1 by 0
+2017-07-07 14:26:32,528:ERROR:wrong!
+2017-07-07 14:26:32,528:INFO:The division successes
+2017-07-07 14:26:32,528:INFO:
