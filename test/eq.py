@@ -34,7 +34,8 @@ def prettyprint(solution):
         return '. ' * (pos) + 'X ' + '. ' * (length - pos - 1)
 
     for pos in solution:
-        print line(pos)
+        print
+        line(pos)
 
 
 if __name__ == "__main__":
