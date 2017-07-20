@@ -1,5 +1,5 @@
 # coding=utf-8
-
+import pexpect
 import paramiko
 import os
 
@@ -36,3 +36,20 @@ class Deploy:
 
     def scp_packages(self, file, user, host, destination):
         os.system('scp -r %s %s@%s:/%s' % (file, user, host, destination))
+
+    def scp_password(self, file, user, passwd, host, destination):
+        if os.path.isdir(file):
+            cmdline = 'scp -r %s %s@%s:%s' % (file, user, host, destination)
+        else:
+            cmdline = 'scp %s %s@%s:%s' % (file, user, host, destination)
+        try:
+            child = pexpect.spawn(cmdline)
+            child.expect('password:')
+            child.sendline(passwd)
+            child.expect(pexpect.EOF)
+            # child.interact()
+            # child.read()
+            # child.expect('$')
+            print "uploading"
+        except:
+            print "upload faild!"

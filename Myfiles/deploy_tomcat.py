@@ -1,4 +1,5 @@
-#!/usr/local/bin/python3
+#!/usr/bin/python
+# coding=utf-8
 
 import os
 import shutil
@@ -30,6 +31,7 @@ def back_up():
         print('完成备份...')
     except Exception as e:
         print('备份失败:' + str(e))
+        exit()
 
 
 def stop_service(pid):
@@ -54,6 +56,7 @@ def start_service():
 def copy_newpackage(src_path, dis_tpath):
     if not os.path.exists(src_path):
         print("没有发现新的war包，请检查!")
+        exit()
     else:
         if os.path.exists(webapp_home):
             shutil.rmtree(webapp_home)
