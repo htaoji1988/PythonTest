@@ -50,6 +50,6 @@ class Deploy:
             # child.interact()
             # child.read()
             # child.expect('$')
-            print "uploading"
+            print("uploading")
         except:
-            print "upload faild!"
+            print("upload faild!")
