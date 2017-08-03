@@ -5,6 +5,7 @@ import os
 import shutil
 import subprocess
 from datetime import datetime
+import time
 
 package_name = 'jenkins.war'  # jar包名
 new_package = '/tmp/src/' + package_name  # 新包路径
@@ -12,6 +13,7 @@ tomcat_home = '/Users/tt/test/usr/tomcat7/'  # tomcat目录
 webapp_home = tomcat_home + 'webapps/'  # 工程目录
 date_now = datetime.now().strftime('%Y%m%d_%H%M%S')  # 当前时间
 backup_path = '/Users/tt/test/bak/' + str(date_now)  # 备份目录
+logfile = tomcat_home + 'logs/catalina.out'
 
 
 def get_pid():
@@ -39,6 +41,7 @@ def stop_service(pid):
         try:
             print('停止tomcat服务...')
             os.system('kill -9 ' + pid)
+            time.sleep(5)
         except Exception as e:
             print(str(e))
     else:
@@ -49,6 +52,7 @@ def start_service():
     try:
         print('开始启动tomcat...')
         os.system(tomcat_home + 'bin/startup.sh')
+        time.sleep(10)
     except Exception as e:
         print(e)
 
@@ -67,8 +71,13 @@ def copy_newpackage(src_path, dis_tpath):
         print('已将war包拷贝到webapps目录')
 
 
+def deploy_logs():
+    os.system('tail -30 ' + logfile)
+
+
 if __name__ == "__main__":
     stop_service(get_pid())
     back_up()
     copy_newpackage(new_package, webapp_home)
     start_service()
+    deploy_logs()

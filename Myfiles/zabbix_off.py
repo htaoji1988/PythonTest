@@ -114,8 +114,7 @@ class Zabbix_API:
             self.status = True
 
 
-if __name__=='__main__':
-
+if __name__ == '__main__':
     zabbix = Zabbix_API('xxxxxxx', 'xxxxxxx', url=Zabbix_API.URL)
     zabbix.authID = zabbix.user_login()
     zabbix.status = False

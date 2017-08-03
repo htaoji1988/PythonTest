@@ -7,21 +7,21 @@ from datetime import datetime
 import threading
 from itertools import dropwhile
 
-
-
 logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s [%(levelname)s] [%(threadName)s] %(message)s')
 
-class ThreadClass(threading.Thread):
 
+class ThreadClass(threading.Thread):
     def __init__(self):
         threading.Thread.__init__(self)
 
     def run(self):
         pass
 
+
 def get_date():
-    return datetime.now().strftime('%Y-%m-%d_%H:%M:%S')   # 2016-03-01
+    return datetime.now().strftime('%Y-%m-%d_%H:%M:%S')  # 2016-03-01
+
 
 def getUpgradeWar(directory, suffix=".war"):
     files = []
@@ -29,6 +29,7 @@ def getUpgradeWar(directory, suffix=".war"):
         if len(file) > 0:
             files = [x for x in file if x.endswith(suffix)]
     return files
+
 
 def getStatus(abs_path):
     cmd = "ps -ef | grep {} | grep -v grep".format(abs_path)
@@ -73,10 +74,10 @@ def stop_service(abs_path):
         logging.warning('not have process id')
 
     finally:
-       pass
+        pass
+
 
 def startService(abs_path):
-
     cmd = "ps -ef | grep {} | grep -v grep".format(abs_path)
 
     if not getStatus(abs_path):
@@ -88,8 +89,8 @@ def startService(abs_path):
     else:
         logging.info("tomcat process is working now, do not need start up")
 
-class Auto:
 
+class Auto:
     def __init__(self, **kwargs):
         '''
         :param args:
@@ -105,7 +106,6 @@ class Auto:
         self.app_package = kwargs.get('app_package', None)
         self.src_dir = kwargs.get('src_dir', '/tmp')
         self.catalina_home = kwargs.get('catalina_home', None)
-
 
     def _getDir(self, *args):
 
@@ -141,7 +141,7 @@ class Auto:
         if self.catalina_home is None:
             return 'error'
 
-        path = os.path.join(self.catalina_home, *args) #application_name/bak/2016-01-01
+        path = os.path.join(self.catalina_home, *args)  # application_name/bak/2016-01-01
 
         if not os.path.exists(path):
             os.mkdir(path)
@@ -198,7 +198,6 @@ if __name__ == '__main__':
         # catalina_home = '/Users/apple/apache-tomcat-7.0.68'
         catalina_home = '/opt/tomcat'
 
-
     date_dir = get_date()
 
     files = getUpgradeWar('/tmp/sales')
@@ -207,8 +206,8 @@ if __name__ == '__main__':
 
     for file in files:
         app = Auto(app_package=file,
-                catalina_home=catalina_home,
-                src_dir='/tmp/sales')
+                   catalina_home=catalina_home,
+                   src_dir='/tmp/sales')
 
         app.backupOldPackage('bak', date_dir)
         app.cleanCacheWork('work', 'Catalina')
