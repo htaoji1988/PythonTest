@@ -1,0 +1,75 @@
+#!/usr/bin/python
+import urllib.request
+import json
+import re
+
+url = 'http://172.16.107.136/zabbix/api_jsonrpc.php'
+
+login_info = {
+    "jsonrpc": "2.0",
+    "method": "user.login",
+    "params": {
+        "user": "admin",
+        "password": "zabbix",
+        # "userData": "true"
+    },
+    "id": 1,
+}
+
+
+# 登陆
+def login(url, values):
+    data = json.dumps(values).encode('utf-8')
+    req = urllib.request.Request(url, data, {'Content-Type': 'application/json-rpc'})
+    response = urllib.request.urlopen(req, data, timeout=5)
+    a = response.read().decode(encoding='utf-8')
+    output = json.loads(a)
+    try:
+        message = output['result']
+    except:
+        message = output['error']['data']
+        print(message)
+        quit()
+
+    return output['result']
+
+
+def gethost(auth_code):
+    host_list = []
+    get_host_data = json.dumps(
+        {
+            "jsonrpc": "2.0",
+            "method": "host.get",
+            "params": {
+                "output": [
+                    "hostid",
+                    "host"
+                ],
+                "selectInterfaces": [
+                    "interfaceid",
+                    "ip"
+                ]
+            },
+            "id": 2,
+            "auth": auth_code
+        }
+    )
+
+    request = urllib.request.Request(url, get_host_data, {'Content-Type': 'application/json-rpc'})
+    result = urllib.request.urlopen(request, get_host_data, timeout=5)
+    response = json.loads(result.read())
+    result.close()
+    print("%-15s%-60s%20s%20s%20s%20s%20s" % (
+        'id', 'name', 'status', 'available', 'snmp_available', 'jmx_available', 'ipmi_available'))
+    for r in response['result']:
+        host_list.append(r['hostid'])
+        print("%-15s%-60s%20s%20s%20s%20s%20s" % (
+            r['hostid'], r['name'], r['status'], r['available'], r['snmp_available'], r['jmx_available'],
+            r['ipmi_available']))
+        # print r
+        print("Num of hosts:", len(host_list))
+        return 0
+
+
+if __name__ == "__main__":
+    gethost(login(url, login_info))

@@ -1,7 +1,5 @@
 #!/usr/local/pyenv/shims/python3.5
-# -*- coding: utf-8 -*-
-# @Time    : 6/6/17 3:19 PM
-# @Author  : edison
+
 import json
 import urllib.request
 import socket
