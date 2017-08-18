@@ -2,36 +2,36 @@
 import pexpect
 import paramiko
 import os
+import sys
 
 
 class Deploy:
     def __init__(self):
         pass
 
-    def PublishWithPasswd(self, host, user, passwd, cmds):
+    def PublishWithPasswd(self, hosts, user, passwd, cmds):
         client = paramiko.SSHClient()
         client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        print("connecting")
-        client.connect(hostname=host, username=user, password=passwd)
-        print("connected")
-        commands = cmds
-        for command in commands:
-            stdin, stdout, stderr = client.exec_command(command)
-            print(stdout.read())
+        for host in hosts:
+            print("connecting")
+            client.connect(hostname=host, username=user, password=passwd)
+            print("connected")
+            for command in cmds:
+                stdin, stdout, stderr = client.exec_command(command)
+                print(stdout.read())
         client.close()
 
-    def PublishWithKey(self, host, user, keypath, cmds):
+    def PublishWithKey(self, hosts, user, keypath, cmds):
         key = paramiko.RSAKey.from_private_key_file(keypath)
         client = paramiko.SSHClient()
         client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        print("connecting")
-        client.connect(hostname=host, username=user, pkey=key)
-        print("connected")
-        commands = cmds
-        for command in commands:
-            print(command)
-            stdin, stdout, stderr = client.exec_command(command)
-            print(stdout.read())
+        for host in hosts:
+            print("connecting")
+            client.connect(hostname=host, username=user, pkey=key)
+            print("connected")
+            for command in cmds:
+                stdin, stdout, stderr = client.exec_command(command)
+                print(stdout.read())
         client.close()
 
     def scp_packages(self, file, user, host, destination):
@@ -53,3 +53,19 @@ class Deploy:
             print("uploading")
         except:
             print("upload faild!")
+
+
+if __name__ == "__main__":
+    publish = Deploy()
+
+    servers = [
+        "172.16.107.137",
+        "172.16.107.136",
+    ]
+
+    commonds = [
+        "touch /tmp/test",
+        "ls",
+    ]
+
+    publish.PublishWithKey(servers, 'root', "/Users/tt/.ssh/id_rsa", commonds)

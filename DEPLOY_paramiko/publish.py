@@ -6,26 +6,33 @@ import sys
 
 def deploy_withkey(ips, user, keypath, cmds):
     t = Deploy.Deploy()
-    for ip in ips.split("|"):
-        ip = ip.strip()
-        t.PublishWithKey(ip, user, keypath, cmds.split("|"))
+    t.PublishWithKey(ips, user, keypath, cmds)
 
 
 def deploy_withpasswd(ips, usr, passwd, cmds):
     t = Deploy.Deploy()
-    for ip in ips.split("|"):
-        ip = ip.strip()
-        t.PublishWithPasswd(ip, usr, passwd, cmds.split("|"))
+    t.PublishWithPasswd(ips, usr, passwd, cmds)
 
 
 if __name__ == "__main__":
     if sys.argv[1] == "IDM_PRE":
-        server = "172.20.6.150|172.20.6.151"
-        commond = "/home/admin/shell/deploy_tomcat.py"
-        deploy_withkey(server, 'admin', "/home/tomcat/.ssh/id_rsa", commond)
+        servers = [
+            "172.20.6.150",
+            "172.20.6.151",
+        ]
+        commonds = [
+            "/home/admin/shell/deploy_tomcat.py",
+        ]
+        deploy_withkey(servers, 'admin', "/home/tomcat/.ssh/id_rsa", commonds)
+
     elif sys.argv[1] == "IDM_PRD":
-        server = "172.20.2.17|172.20.2.18"
-        commond = "/home/admin/shell/deploy_tomcat.py"
-        deploy_withpasswd(server, 'admin', 'Hao0550', commond)
+        servers = [
+            "172.20.2.17",
+            "172.20.2.18",
+        ]
+        commonds = [
+            "/home/admin/shell/deploy_tomcat.py",
+        ]
+        deploy_withpasswd(servers, 'admin', 'Hao0550', commonds)
     else:
         print("bad parameter!")

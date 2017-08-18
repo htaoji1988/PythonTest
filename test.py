@@ -1,6 +1,13 @@
-import time
-x = 0
-while True:
-    x += 1
-    print(x)
-    time.sleep(1)
+class Student(object):
+
+    @property
+    def birth(self):
+        return self.birth
+
+    @birth.setter
+    def birth(self, value):
+        self.birth = value
+
+    @property
+    def age(self):
+        return 2014 - self.birth

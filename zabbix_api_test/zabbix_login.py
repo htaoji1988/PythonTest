@@ -34,42 +34,32 @@ def login(url, values):
     return output['result']
 
 
+# 获取主机IP
 def gethost(auth_code):
-    host_list = []
-    get_host_data = json.dumps(
-        {
-            "jsonrpc": "2.0",
-            "method": "host.get",
-            "params": {
-                "output": [
-                    "hostid",
-                    "host"
-                ],
-                "selectInterfaces": [
-                    "interfaceid",
-                    "ip"
-                ]
-            },
-            "id": 2,
-            "auth": auth_code
-        }
-    )
-
-    request = urllib.request.Request(url, get_host_data, {'Content-Type': 'application/json-rpc'})
-    result = urllib.request.urlopen(request, get_host_data, timeout=5)
+    method = {
+        "jsonrpc": "2.0",
+        "method": "host.get",
+        "params": {
+            "output": [
+                "hostid",
+                "host"
+            ],
+            "selectInterfaces": [
+                "interfaceid",
+                "ip"
+            ]
+        },
+        "id": 2,
+        "auth": auth_code
+    }
+    get_host_data = json.dumps(method).encode('utf-8')
+    req = urllib.request.Request(url, get_host_data, {'Content-Type': 'application/json-rpc'})
+    result = urllib.request.urlopen(req, get_host_data, timeout=5)
     response = json.loads(result.read())
     result.close()
-    print("%-15s%-60s%20s%20s%20s%20s%20s" % (
-        'id', 'name', 'status', 'available', 'snmp_available', 'jmx_available', 'ipmi_available'))
-    for r in response['result']:
-        host_list.append(r['hostid'])
-        print("%-15s%-60s%20s%20s%20s%20s%20s" % (
-            r['hostid'], r['name'], r['status'], r['available'], r['snmp_available'], r['jmx_available'],
-            r['ipmi_available']))
-        # print r
-        print("Num of hosts:", len(host_list))
-        return 0
+    return response
 
 
-if __name__ == "__main__":
-    gethost(login(url, login_info))
+if __name__ == '__main__':
+    a = gethost(login(url, login_info))
+    print(a)
