@@ -22,4 +22,5 @@ def deploy(user, host):
         print(stdout.read())
     c.close()
 
+
 deploy('root', hosts)
