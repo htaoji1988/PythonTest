@@ -1,24 +1,18 @@
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <style>
-        div {
-            border: 2px solid #a1a1a1;
-            padding: 10px 40px;
-            background: #dddddd;
-            width: 300px;
-            border-radius: 25px;
-        }
-    </style>
+<meta charset="utf-8">
+<title>菜鸟教程(runoob.com)</title>
 </head>
 <body>
-<p id="test">aaaaa
-    <script>
-        x = document.getElementById("test");
-        x.innerHTML = "Hello World!";
-    </script>
-</p>
 
-</div>
+<h1>使用 "use strict":</h1>
+<h3>不允许使用未定义的变量。</h3>
+<p>浏览器按下 F12 开启调试模式，查看报错信息。</p>
+<script>
+"use strict";
+x = 3.14;       // 报错 (x 未定义)
+</script>
+
 </body>
 </html>
