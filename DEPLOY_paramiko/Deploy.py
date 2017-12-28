@@ -56,16 +56,21 @@ class Deploy:
 
 
 if __name__ == "__main__":
+
     publish = Deploy()
 
-    servers = [
-        "172.16.107.137",
-        "172.16.107.136",
-    ]
+    if sys.argv[1] == "MPART-SERVER_TEST":
+        servers = [
+            "172.26.132.59",
+            #"172.16.107.136",
+        ]
 
-    commonds = [
-        "touch /tmp/test",
-        "ls",
-    ]
+        commonds = [
+            "/home/admin/shell/publish.sh",
+            #"ls",
+        ]
 
-    publish.PublishWithKey(servers, 'root', "/Users/tt/.ssh/id_rsa", commonds)
+        publish.PublishWithKey(servers, 'admin', "/home/tomcat/.ssh/id_rsa", commonds)
+    else:
+        print("wrong parameter!")
+        exit()
