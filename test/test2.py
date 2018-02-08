@@ -1,7 +1,18 @@
-import time
+class Book(object):
 
-n = 0
-while (n < 10000):
-    n += 1
-    print(n)
-    time.sleep(1)
+    def __init__(self, title):
+        self.title = title
+
+    @classmethod
+    def create(cls, title):
+        book = cls(title=title)
+        return book
+
+    @staticmethod
+    def create():
+
+
+book1 = Book("python")
+book2 = Book.create("python and django")
+print(book1.title)
+print(book2.title)
