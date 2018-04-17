@@ -9,6 +9,7 @@ class Deploy:
     def __init__(self):
         pass
 
+    # 使用密码执行
     def PublishWithPasswd(self, hosts, user, passwd, cmds):
         client = paramiko.SSHClient()
         client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -21,6 +22,7 @@ class Deploy:
                 print(stdout.read())
         client.close()
 
+    # 使用ssh-key执行
     def PublishWithKey(self, hosts, user, keypath, cmds):
         key = paramiko.RSAKey.from_private_key_file(keypath)
         client = paramiko.SSHClient()

@@ -1,0 +1,24 @@
+{
+  "http:0XWcsyZkEmUT2KONTunDpcC-NKqDE0HvD2yjm-O8:fsdl": {
+    "ioHosts": [
+      "http://iovip.qbox.me"
+    ],
+    "upHosts": [
+      "http://up.qiniu.com",
+      "http://upload.qiniu.com",
+      "-H up.qiniu.com http://183.131.7.18"
+    ],
+    "deadline": 1508836764
+  },
+  "http:0XWcsyZkEmUT2KONTunDpcC-NKqDE0HvD2yjm-O8:fsdl/eep/test/v1.1.0.2/": {
+    "ioHosts": [
+      "http://iovip.qbox.me"
+    ],
+    "upHosts": [
+      "http://up.qiniu.com",
+      "http://upload.qiniu.com",
+      "-H up.qiniu.com http://183.131.7.18"
+    ],
+    "deadline": 1508837958
+  }
+}
