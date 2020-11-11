@@ -1,8 +1,8 @@
 import pymysql.cursors
 
-connection = pymysql.connect(host='172.16.107.136',
+connection = pymysql.connect(host='172.22.111.220',
                              user='root',
-                             password='Abcd@1234',
+                             password='213a!!!!!ss',
                              db='testdb',
                              charset='utf8mb4',
                              cursorclass=pymysql.cursors.DictCursor)
