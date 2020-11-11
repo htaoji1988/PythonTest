@@ -3,14 +3,14 @@ import urllib.request
 import json
 import re
 
-url = 'http://172.16.107.136/zabbix/api_jsonrpc.php'
+url = 'http://172.21.222.111/zabbix/api_jsonrpc.php'
 
 login_info = {
     "jsonrpc": "2.0",
     "method": "user.login",
     "params": {
         "user": "admin",
-        "password": "zabbix",
+        "password": "tt_test",
         # "userData": "true"
     },
     "id": 1,
