@@ -8,7 +8,7 @@ import httplib, urllib
 import sys
 
 jsonfile = '/Users/tt/.jenkins/workspace/yq/src/version.json'
-posturl = "https://eep-t.efivestar.com/api/version/create"
+posturl = "https://xxxxxxxxxxxxx/api/version/create"
 
 config_data = open(jsonfile)
 config = json.load(config_data)
@@ -19,8 +19,8 @@ mydata = {
     "lastVersion": 'true',
     "versionNO": version,
     "versionAbout": "",
-    "androidAddress": "https://dl.efivestar.com/eep/test/v1.1.0.3/EEP_v1.1.0.3.apk",
-    "iosAddress": "itms-services://?action=download-manifest&url=https://dl.efivestar.com/eep/test/v1.1.0.3/manifest.plist",
+    "androidAddress": "https://xxxxxxxxxxxxxxx/eep/test/v1.1.0.3/EEP_v1.1.0.3.apk",
+    "iosAddress": "itms-services://?action=download-manifest&url=https://xxxxxxxxxxxxxxxxxxx/eep/test/v1.1.0.3/manifest.plist",
     "forceUpate": 'true'
 }
 
